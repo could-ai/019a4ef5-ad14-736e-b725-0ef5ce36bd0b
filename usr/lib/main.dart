@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:couldai_user_app/screens/login_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: 'YOUR_SUPABASE_URL',
+    anonKey: 'YOUR_SUPABASE_ANON_KEY',
+  );
+
   runApp(const MyApp());
 }
 
@@ -51,3 +59,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// Create a Supabase client instance
+final supabase = Supabase.instance.client;
